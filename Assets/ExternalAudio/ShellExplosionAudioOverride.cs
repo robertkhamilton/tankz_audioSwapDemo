@@ -8,7 +8,7 @@ public class ShellExplosionAudioOverride : MonoBehaviour
 
     private AudioClip shellAudioExplosion_AudioClip;
 
-    public AudioManager myAudioManager;
+    private AudioManager myAudioManager;
 
     private void Awake()
     {

@@ -32,6 +32,9 @@ public class AudioManager : MonoBehaviour
     public string shellAudioExplosion_Filename;
     private AudioClip shellAudioExplosion_AudioClip;
 
+    public string tankAudioExplosion_Filename;
+    private AudioClip tankAudioExplosion_AudioClip;
+
     public GameManagerOverride gameManagerOverrideScript;
     public TankAudioOverride tankAudioOverrideScript;
     public ShellAudioOverride shellAudioOverrideScript;
@@ -50,6 +53,7 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(LoadAudioCoroutine(tankAudioEngineIdle_Filename, tankAudioEngineIdle_AudioClip, AudioType.WAV, onComplete));
         StartCoroutine(LoadAudioCoroutine(tankAudioEngineDriving_Filename, tankAudioEngineDriving_AudioClip, AudioType.WAV, onComplete));
         StartCoroutine(LoadAudioCoroutine(shellAudioExplosion_Filename, shellAudioExplosion_AudioClip, AudioType.WAV, onComplete));
+        StartCoroutine(LoadAudioCoroutine(tankAudioExplosion_Filename, tankAudioExplosion_AudioClip, AudioType.WAV, onComplete));
     }
 
     public bool getUseExternalAudio() { return useExternalAudio; }
@@ -120,42 +124,16 @@ public class AudioManager : MonoBehaviour
         {
             shellAudioExplosion_AudioClip = currentClip;
         }
+        else if (currentAudioClipName == tankAudioExplosion_Filename)
+        {
+            tankAudioExplosion_AudioClip = currentClip;
+        }
     }
 
     private void loadBackgroundMusic(AudioClip aClip)
     {
         gameManagerOverrideScript.setAudioClip(aClip);
     }
-
-    /*
-    private void loadTankAudioShotCharging(AudioClip aClip)
-    {
-        Debug.Log("In AudioManager :: loadTankAudioShotCharging()");
-
-        tankAudioOverrideScript.setAudioClip_shotCharging(aClip);
-    }
-    private void loadTankAudioShotFiring()
-    {
-        Debug.Log("In AudioManager :: loadTankAudioShotFiring()");
-
-        if (tankAudioShotFiring_AudioClip == null)
-            Debug.Log("In AudioManager :: loadTankAudioShotFiring() :: tankAudioShotFiring_AudioClip == null");
-
-        tankAudioOverrideScript.setAudioClip_shotFiring(tankAudioShotFiring_AudioClip);
-    }
-    private void loadTankAudioEngineIdle(AudioClip aClip)
-    {
-        tankAudioOverrideScript.setAudioClip_EngineIdle(aClip);
-    }
-    private void loadTankAudioEngineDriving(AudioClip aClip)
-    {
-        tankAudioOverrideScript.setAudioClip_EngineDriving(aClip);
-    }
-    private void loadShellAudioExplosion()
-    {
-
-    }
-    */
 
     private string getApplicationDataPath()
     {
@@ -181,4 +159,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip getExternalAudio_tankAudioEngineIdle() { return tankAudioEngineIdle_AudioClip; }
     public AudioClip getExternalAudio_tankAudioEngineDriving() { return tankAudioEngineDriving_AudioClip; }
     public AudioClip getExternalAudio_shellAudioExplosion() { return shellAudioExplosion_AudioClip; }
+    public AudioClip getExternalAudio_tankAudioExplosion() { return tankAudioExplosion_AudioClip; }
+
 }
