@@ -5,8 +5,8 @@ using UnityEngine;
 public class TankExplosionAudioOverride : MonoBehaviour
 {
     private AudioSource audioSource;
-    private AudioClip customClip;
 
+    //private AudioClip customClip;
     private AudioClip tankAudioExplosion_AudioClip;
 
     private AudioManager myAudioManager;
@@ -20,18 +20,16 @@ public class TankExplosionAudioOverride : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         // Overriding Inspector settings in code
-        audioSource.clip = null;// customClip;
-    }
+        audioSource.clip = null;
 
-    private void Start()
-    {
         tankAudioExplosion_AudioClip = myAudioManager.getExternalAudio_tankAudioExplosion();
         setAudioClip_TankExplosion(tankAudioExplosion_AudioClip);
     }
+
     public void setAudioClip(AudioClip aClip)
     {
-        customClip = aClip;
-        audioSource.clip = customClip;
+       //customClip = aClip;
+        audioSource.clip = aClip;
     }
 
     private void setAudioClip_TankExplosion(AudioClip aClip)
